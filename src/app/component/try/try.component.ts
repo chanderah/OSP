@@ -67,17 +67,6 @@ export class TryComponent implements OnInit {
     );
   }
 
-  duplicateItem(subCategoryIndex: number, itemIndex: number) {
-    this.listItem(subCategoryIndex).insert(
-      itemIndex,
-      this.listItem(subCategoryIndex).at(itemIndex)
-    );
-  }
-
-  deleteItem(subCategoryIndex: number, itemIndex: number) {
-    this.listItem(subCategoryIndex).removeAt(itemIndex);
-  }
-
   getDataFromApi() {
     const dummy = {
       itemGroup: 'GA',
