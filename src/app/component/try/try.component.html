@@ -33,11 +33,7 @@
           formControlName="childItem"
           placeholder="childItem"
         />
-        <input
-          type="number"
-          formControlName="childId"
-          placeholder="Sub Category SubChild ID"
-        />
+        <input type="number" formControlName="childId" placeholder="childId" />
         <button (click)="deleteChild(i)">delete</button>
       </div>
 
@@ -50,11 +46,15 @@
         >
           <span>subChild index: {{ j }}</span>
           <div>
-            <input type="text" formControlName="itemType" placeholder="Type" />
+            <input
+              type="text"
+              formControlName="itemType"
+              placeholder="itemType"
+            />
             <input
               type="text"
               formControlName="itemBrand"
-              placeholder="Brand"
+              placeholder="itemBrand"
             />
 
             <!-- <button (click)="duplicateItem(i, j)">duplicate</button> -->
