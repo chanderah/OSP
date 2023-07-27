@@ -12,9 +12,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GudangGaramComponent } from './component/gudang-garam/gudang-garam.component';
 import { MapComponent } from './component/map/map.component';
+import { TryComponent } from './component/try/try.component';
 
 @NgModule({
-  declarations: [AppComponent, GudangGaramComponent, MapComponent],
+  declarations: [AppComponent, GudangGaramComponent, MapComponent, TryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
