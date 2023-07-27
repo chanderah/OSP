@@ -1,0 +1,47 @@
+<div>
+  <div [formGroup]="filterMap">
+    <div class="container" (keyup.enter)="onSearchPlace()">
+      <label for="placeInput">Place: </label>
+      <input placeholder="Search places..." formControlName="place" />
+      <button type="submit" (click)="onSearchPlace()">Search by Place</button>
+    </div>
+    <div class="container" (keyup.enter)="onSearchLatLong()">
+      <label for="latInput">Latittude: </label>
+      <input
+        type="number"
+        placeholder="Enter latitude..."
+        formControlName="lat"
+      />
+      <label for="longInput">Longitude: </label>
+      <input
+        type="number"
+        placeholder="Enter longitude..."
+        formControlName="lon"
+      />
+      <button type="submit" (click)="onSearchLatLong()">
+        Search by LatLong
+      </button>
+    </div>
+    <div class="container" (keyup.enter)="onSearchWayId()">
+      <label for="wayIdInput">Way ID: </label>
+      <input
+        type="number"
+        placeholder="Search WayID..."
+        formControlName="wayId"
+      />
+      <button type="submit" (click)="onSearchWayId()">Search by WayID</button>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="column details">
+        <div *ngFor="let data of details | keyvalue">
+          <p>
+            <span class="title">{{ data.key }}: </span> {{ data.value }}
+          </p>
+        </div>
+      </div>
+      <div class="column" id="map"></div>
+    </div>
+  </div>
+</div>
