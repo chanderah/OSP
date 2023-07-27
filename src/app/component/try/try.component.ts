@@ -15,7 +15,7 @@ export class TryComponent implements OnInit {
       categoryId: [{ value: null, disabled: true }],
       categoryItem: [null],
       status: [null],
-      listSubCategory: this.formBuilder.array([]),
+      listChild: this.formBuilder.array([]),
     });
   }
 
@@ -23,41 +23,38 @@ export class TryComponent implements OnInit {
 
   resetForm() {
     this.form.reset();
-    while (this.listSubCategory().length > 0)
-      this.listSubCategory().removeAt(0);
+    while (this.listChild().length > 0) this.listChild().removeAt(0);
   }
 
-  // listSubCategory(): FormArray {
-  //   return this.form.controls['listSubCategory'] as FormArray;
+  // listChild(): FormArray {
+  //   return this.form.controls['listChild'] as FormArray;
   // }
 
-  listSubCategory(): FormArray {
-    return this.form.get('listSubCategory') as FormArray;
+  listChild(): FormArray {
+    return this.form.get('listChild') as FormArray;
   }
 
-  listItem(subCategoryIndex: number): FormArray {
-    return this.listSubCategory()
-      .at(subCategoryIndex)
-      .get('listItem') as FormArray;
+  listSubChild(childIndex: number): FormArray {
+    return this.listChild().at(childIndex).get('listSubChild') as FormArray;
   }
 
-  addSubCategory() {
-    this.listSubCategory().push(
+  addChild() {
+    this.listChild().push(
       this.formBuilder.group({
-        subCategoryId: [{ value: null, disabled: true }],
-        subCategoryItem: [''],
+        childId: [{ value: null, disabled: true }],
+        childItem: [''],
         status: [true],
-        listItem: this.formBuilder.array([]),
+        listSubChild: this.formBuilder.array([]),
       })
     );
   }
 
-  deleteSubCategory(index: number) {
-    this.listSubCategory().removeAt(index);
+  deleteChild(index: number) {
+    this.listChild().removeAt(index);
   }
 
-  addItem(subCategoryIndex: number) {
-    this.listItem(subCategoryIndex).push(
+  addItem(childIndex: number) {
+    this.listSubChild(childIndex).push(
       this.formBuilder.group({
         itemId: [{ value: null, disabled: true }],
         itemType: [''],
@@ -67,18 +64,30 @@ export class TryComponent implements OnInit {
     );
   }
 
+  duplicateItem(childIndex: number, itemIndex: number) {
+    console.log(this.listSubChild(childIndex).at(itemIndex).value);
+    this.listSubChild(childIndex).insert(
+      itemIndex,
+      this.listSubChild(childIndex).at(itemIndex)
+    );
+  }
+
+  deleteItem(childIndex: number, itemIndex: number) {
+    console.log(this.listSubChild(childIndex).at(itemIndex).value);
+    this.listSubChild(childIndex).removeAt(itemIndex);
+  }
   getDataFromApi() {
     const dummy = {
       itemGroup: 'GA',
       categoryId: 1,
       categoryItem: 'Kipas',
       status: true, //aktif
-      listSubCategory: [
+      listChild: [
         {
-          subCategoryId: 2,
-          subCategoryItem: 'Kipas a',
+          childId: 2,
+          childItem: 'Kipas a',
           status: true, //aktif
-          listItem: [
+          listSubChild: [
             {
               itemType: 'Kipas a-1',
               itemBrand: 'MEANWELL',
@@ -87,10 +96,10 @@ export class TryComponent implements OnInit {
           ],
         },
         {
-          subCategoryId: 3,
-          subCategoryItem: 'Kipas b',
+          childId: 3,
+          childItem: 'Kipas b',
           status: true, //aktif
-          listItem: [
+          listSubChild: [
             {
               itemType: 'Kipas b-1',
               itemBrand: 'MEANWELL1',
@@ -110,9 +119,9 @@ export class TryComponent implements OnInit {
 
   setForm(data: any) {
     this.resetForm();
-    data.listSubCategory.forEach((subCategory: any, i: number) => {
-      this.addSubCategory();
-      subCategory.listItem.forEach(() => this.addItem(i));
+    data.listChild.forEach((child: any, i: number) => {
+      this.addChild();
+      child.listSubChild.forEach(() => this.addItem(i));
     });
     this.form.patchValue(data);
   }
