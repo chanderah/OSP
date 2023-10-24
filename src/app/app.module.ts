@@ -1,7 +1,9 @@
+import { CdkColumnDef } from '@angular/cdk/table';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -33,6 +35,7 @@ import { TryComponent } from './component/try/try.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDividerModule,
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
@@ -40,7 +43,7 @@ import { TryComponent } from './component/try/try.component';
     MatSelectModule,
     MatTableModule,
   ],
-  providers: [],
+  providers: [CdkColumnDef],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

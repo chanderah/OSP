@@ -1,29 +1,42 @@
-<table mat-table [dataSource]="listData" class="mat-elevation-z8">
-  <div *ngFor="let col of displayedColumns">
-    <ng-container [matColumnDef]="col">
-      <th mat-header-cell *matHeaderCellDef style="text-transform: uppercase">
-        {{ col }}
-      </th>
-      <td mat-cell *matCellDef="let data">{{ data.id }}</td>
-    </ng-container>
+<common-grid [datas]="listData" [enabledColumns]="displayedColumns">
+  woiii
+</common-grid>
 
-    <!-- <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let data">{{ data.name }}</td>
-    </ng-container>
+<!-- <mat-table [dataSource]="listData" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell *matCellDef="let data"> {{ data.id }} </mat-cell>
+  </ng-container>
 
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef>Position</th>
-      <td mat-cell *matCellDef="let data">{{ data.position }}</td>
-    </ng-container>
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let data"> {{ data.name }} </mat-cell>
+  </ng-container>
 
-    <ng-container matColumnDef="birthDate">
-      <th mat-header-cell *matHeaderCellDef>Birth Date</th>
-      <td mat-cell *matCellDef="let data">
-        {{ data.birthDate | date : "MMMM d, y" }}
-      </td>
-    </ng-container> -->
-  </div>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
+  <ng-container matColumnDef="position">
+    <mat-header-cell *matHeaderCellDef> Position </mat-header-cell>
+    <mat-cell *matCellDef="let data"> {{ data.position }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="birthDate">
+    <mat-header-cell *matHeaderCellDef> Birth Date </mat-header-cell>
+    <mat-cell *matCellDef="let data">
+      {{ data.birthDate | date }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+    <mat-cell *matCellDef="let data">
+      <button mat-mini-fab color="primary" (click)="onButtonClicked(data, 'info')">
+        <mat-icon>info</mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" (click)="onButtonClicked(data, 'delete')" style="margin-left: 6px">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table> -->

@@ -8,13 +8,29 @@ import { DummyData } from 'src/app/interface/dummy_data';
 })
 export class TryGridComponent implements OnInit {
   listData = [] as DummyData[];
-  displayedColumns: string[] = ['id', 'name', 'position', 'birthDate'];
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'position',
+    'birthDate',
+    'actions',
+  ];
+
+  // displayedColumns2: Column[] = [
+  //   { name: 'ID', source: 'id' },
+  //   { name: 'Name', source: 'name' },
+  //   { name: 'Position', source: 'position' },
+  //   { name: 'Birth Date', source: 'birthDate' },
+  // ];
 
   constructor() {}
 
   ngOnInit(): void {
     this.generateDummyData();
-    console.log(this.listData);
+  }
+
+  onButtonClicked(data: DummyData, action: string) {
+    alert(`${action}: ID ${data.id}`);
   }
 
   generateDummyData() {
