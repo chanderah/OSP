@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "OSP": {
+    "OSM": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "OSP:build:production"
+              "browserTarget": "OSM:build:production"
             },
             "development": {
-              "browserTarget": "OSP:build:development"
+              "browserTarget": "OSM:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "OSP:build"
+            "browserTarget": "OSM:build"
           }
         },
         "test": {

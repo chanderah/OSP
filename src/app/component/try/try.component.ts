@@ -26,10 +26,6 @@ export class TryComponent implements OnInit {
     while (this.listChild().length > 0) this.listChild().removeAt(0);
   }
 
-  // listChild(): FormArray {
-  //   return this.form.controls['listChild'] as FormArray;
-  // }
-
   listChild(): FormArray {
     return this.form.get('listChild') as FormArray;
   }
