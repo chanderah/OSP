@@ -17,15 +17,15 @@ import { AppComponent } from './app.component';
 import { GudangGaramComponent } from './component/gudang-garam/gudang-garam.component';
 import { MapComponent } from './component/map/map.component';
 import { TryGridComponent } from './component/try-grid/try-grid.component';
-import { TryComponent } from './component/try/try.component';
+import { TryGrid2Component } from './component/try-grid2/try-grid2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GudangGaramComponent,
     MapComponent,
-    TryComponent,
     TryGridComponent,
+    TryGrid2Component,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,25 @@
-<table mat-table [dataSource]="datas" class="mat-elevation-z8">
-  <ng-content [select]="tableContent"></ng-content>
-
-  <tr mat-header-row *matHeaderRowDef="enabledColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: enabledColumns"></tr>
+<table class="mat-elevation-z8" style="width: 100%">
+  <thead>
+    <tr>
+      <th *ngFor="let col of tableConfig.columns">
+        {{ col.title }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of tableContent">
+      <td *ngFor="let col of tableConfig.columns">
+        <!-- prettier-ignore -->
+        <div *ngIf="col.property !== 'action'; else action" (click)="onRowDataClick(row)">
+          {{ row[ col.property ] }}
+        </div>
+        <ng-template #action>
+          <!-- prettier-ignore -->
+          <button mat-mini-fab color="primary" (click)="onRowActionClick(col.type, row)" style="margin-left: 6px">
+            <mat-icon>{{ col.icon }}</mat-icon>
+          </button>
+        </ng-template>
+      </td>
+    </tr>
+  </tbody>
 </table>

@@ -1,34 +1,8 @@
-<!-- <sm-custom-grid
+<sm-custom-grid
   [datas]="listData"
   [enabledColumns]="displayedColumns"
   [callback1]="function1"
   [callback2]="function2"
 >
   <p content>Render this on Child component.</p>
-</sm-custom-grid> -->
-
-<sm-custom-grid2 [datas]="listData" [enabledColumns]="displayedColumns">
-  <div tableContent>
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let data">{{ data.id }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let data">{{ data.name }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef>Position</th>
-      <td mat-cell *matCellDef="let data">{{ data.position }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="birthDate">
-      <th mat-header-cell *matHeaderCellDef>Birth Date</th>
-      <td mat-cell *matCellDef="let data">
-        {{ data.birthDate | date : "dd/MM/yy" }}
-      </td>
-    </ng-container>
-  </div>
-</sm-custom-grid2>
+</sm-custom-grid>
