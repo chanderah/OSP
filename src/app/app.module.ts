@@ -14,7 +14,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SmCommonLibModule } from 'sm-common-lib';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CommonGridComponent } from './component/common/common-grid/common-grid.component';
 import { GudangGaramComponent } from './component/gudang-garam/gudang-garam.component';
 import { MapComponent } from './component/map/map.component';
 import { TryGridComponent } from './component/try-grid/try-grid.component';
@@ -27,7 +26,6 @@ import { TryComponent } from './component/try/try.component';
     MapComponent,
     TryComponent,
     TryGridComponent,
-    CommonGridComponent,
   ],
   imports: [
     BrowserModule,

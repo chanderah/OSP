@@ -9,6 +9,9 @@ import { DummyData } from '../../interface/dummy_data';
 export class CustomGridComponent {
   @Input() datas: DummyData[] = [];
   @Input() enabledColumns: string[] = [];
+  @Input() callback1: any;
+  @Input() callback2: any;
+  @Input() callback3: any;
 
   constructor() {}
 
@@ -16,7 +19,12 @@ export class CustomGridComponent {
     console.log(this.datas);
   }
 
-  onButtonClicked(data: DummyData, action: string) {
-    alert(`${action}: ID ${data.id}`);
+  function1(data: DummyData, action: string) {
+    // alert(`${action}: ID ${data.id}`);
+    this.callback1(`${action}: ID ${data.id}`);
+  }
+
+  function2(data: DummyData, action: string) {
+    this.callback2(`${action}: ID ${data.id}`);
   }
 }

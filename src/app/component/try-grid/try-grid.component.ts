@@ -50,4 +50,12 @@ export class TryGridComponent implements OnInit {
         id: dummy[i % 3].id + i,
       });
   }
+
+  function1(data: any) {
+    alert(data);
+  }
+
+  function2(data: any) {
+    console.log(data);
+  }
 }
