@@ -1,3 +1,5 @@
+<ng-content [select]="content"></ng-content>
+
 <table mat-table [dataSource]="datas" class="mat-elevation-z8">
   <div *ngFor="let col of enabledColumns">
     <ng-container [matColumnDef]="col">
