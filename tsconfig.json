@@ -18,7 +18,8 @@
     "importHelpers": true,
     "paths": {
       "sm-common-lib": [
-        "dist/sm-common-lib"
+        // "dist/sm-common-lib"
+        "projects/sm-common-lib"
       ]
     },
     "target": "ES2022",
