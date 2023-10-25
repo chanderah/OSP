@@ -16,21 +16,10 @@ export class TryGridComponent implements OnInit {
     'actions',
   ];
 
-  // displayedColumns2: Column[] = [
-  //   { name: 'ID', source: 'id' },
-  //   { name: 'Name', source: 'name' },
-  //   { name: 'Position', source: 'position' },
-  //   { name: 'Birth Date', source: 'birthDate' },
-  // ];
-
   constructor() {}
 
   ngOnInit(): void {
     this.generateDummyData();
-  }
-
-  onButtonClicked(data: DummyData, action: string) {
-    alert(`${action}: ID ${data.id}`);
   }
 
   generateDummyData() {

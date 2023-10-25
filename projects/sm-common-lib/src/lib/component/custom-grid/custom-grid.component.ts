@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DummyData } from 'src/app/interface/dummy_data';
+import { DummyData } from '../../interface/dummy_data';
 
 @Component({
   selector: 'sm-custom-grid',

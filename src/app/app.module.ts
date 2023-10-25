@@ -43,6 +43,8 @@ import { TryComponent } from './component/try/try.component';
     MatButtonModule,
     MatSelectModule,
     MatTableModule,
+
+    // LIB
     SmCommonLibModule,
   ],
   providers: [CdkColumnDef],

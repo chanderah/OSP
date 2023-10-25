@@ -1,12 +1,11 @@
 <ng-content [select]="content"></ng-content>
-
+<!-- prettier-ignore -->
 <table mat-table [dataSource]="datas" class="mat-elevation-z8">
   <div *ngFor="let col of enabledColumns">
     <ng-container [matColumnDef]="col">
       <th mat-header-cell *matHeaderCellDef style="text-transform: uppercase">
         {{ col }}
       </th>
-      <!-- prettier-ignore -->
       <td mat-cell *matCellDef="let data">
         <div *ngIf="col !== 'actions'">{{ data[col] }}</div>
         <div *ngIf="col === 'actions'">
