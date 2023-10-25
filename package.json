@@ -33,6 +33,7 @@
     "leaflet.markercluster": "^1.5.3",
     "prettier": "^2.8.8",
     "rxjs": "~7.8.0",
+    "sm-common-lib": "file:dist/sm-common-lib",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
