@@ -96,6 +96,39 @@
           }
         }
       }
+    },
+    "sm-grid": {
+      "projectType": "library",
+      "root": "projects/sm-grid",
+      "sourceRoot": "projects/sm-grid/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/sm-grid/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/sm-grid/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/sm-grid/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/sm-grid/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
   }
 }
