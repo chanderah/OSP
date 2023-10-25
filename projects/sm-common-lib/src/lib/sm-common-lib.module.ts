@@ -11,10 +11,15 @@ import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomGridComponent } from './component/custom-grid/custom-grid.component';
+import { CustomGrid2Component } from './component/custom-grid2/custom-grid2.component';
 import { SmCommonLibComponent } from './sm-common-lib.component';
 
 @NgModule({
-  declarations: [SmCommonLibComponent, CustomGridComponent],
+  declarations: [
+    SmCommonLibComponent,
+    CustomGridComponent,
+    CustomGrid2Component,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -29,6 +34,6 @@ import { SmCommonLibComponent } from './sm-common-lib.component';
     MatSelectModule,
     MatTableModule,
   ],
-  exports: [SmCommonLibComponent, CustomGridComponent],
+  exports: [SmCommonLibComponent, CustomGridComponent, CustomGrid2Component],
 })
 export class SmCommonLibModule {}

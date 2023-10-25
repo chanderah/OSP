@@ -1,0 +1,6 @@
+<table mat-table [dataSource]="datas" class="mat-elevation-z8">
+  <ng-content [select]="tableContent"></ng-content>
+
+  <tr mat-header-row *matHeaderRowDef="enabledColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: enabledColumns"></tr>
+</table>
