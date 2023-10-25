@@ -96,6 +96,39 @@
           }
         }
       }
+    },
+    "sm-common-lib": {
+      "projectType": "library",
+      "root": "projects/sm-common-lib",
+      "sourceRoot": "projects/sm-common-lib/src",
+      "prefix": "sm",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/sm-common-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/sm-common-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/sm-common-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/sm-common-lib/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
   }
 }

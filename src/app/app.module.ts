@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SmCommonLibModule } from 'sm-common-lib';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonGridComponent } from './component/common/common-grid/common-grid.component';
@@ -42,6 +43,7 @@ import { TryComponent } from './component/try/try.component';
     MatButtonModule,
     MatSelectModule,
     MatTableModule,
+    SmCommonLibModule,
   ],
   providers: [CdkColumnDef],
   bootstrap: [AppComponent],
