@@ -14,7 +14,7 @@
           <button
             mat-mini-fab color="primary"
             (click)="onRowActionClick(col.type, row, i)"
-            [disabled]="col.disabled ? (isBoolean(col.disabled) ? col.disabled : col.disabled(row)) : false">
+            [disabled]="runEval(col.disabled, row)">
               <mat-icon>{{ col.icon }}</mat-icon>
           </button>
         </div>

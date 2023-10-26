@@ -23,12 +23,18 @@ export class CustomGrid2Component<T> implements OnInit {
     console.log(this.onRowClick === null);
   }
 
+  public onRowActionClick(action: any, data: T, index: number): void {
+    this.onActionClick(action, data, index);
+  }
+
   public onRowDataClick(data: T, index: number) {
     this.onRowClick(data, index);
   }
 
-  public onRowActionClick(action: any, data: T, index: number): void {
-    this.onActionClick(action, data, index);
+  runEval(fn: any, data: any) {
+    if (!fn) return false;
+    if (typeof fn === 'boolean') return fn;
+    return fn(data);
   }
 
   isBoolean(obj: any): boolean {
