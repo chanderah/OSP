@@ -31,7 +31,7 @@ export class CustomGrid2Component<T> implements OnInit {
     this.onRowClick(data, index);
   }
 
-  runEval(fn: any, data: any) {
+  runEval(fn: any, data: T) {
     if (!fn) return false;
     if (typeof fn === 'boolean') return fn;
     return fn(data);
