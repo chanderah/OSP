@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PagingInfo } from 'src/app/interface/paging_info';
 import { TableColumns } from 'src/app/interface/table_columns';
 import { DummyData } from './../../../../projects/sm-common-lib/src/lib/interface/dummy_data';
 
@@ -8,14 +9,62 @@ import { DummyData } from './../../../../projects/sm-common-lib/src/lib/interfac
   styleUrls: ['./try-grid2.component.scss'],
 })
 export class TryGrid2Component implements OnInit {
+  pagingInfo = {} as PagingInfo;
   listData = [] as DummyData[];
-  tableColumns: TableColumns[];
-
+  tableColumns = [] as TableColumns[];
+  count = 10;
   constructor() {}
 
   ngOnInit(): void {
+    this.pagingInfo = {
+      activePage: 0,
+      offset: 0,
+      limit: 10,
+      limitOptions: [10, 20, 50, 100],
+      sort: { field: '', order: 1 },
+    };
     this.generateTableColumns();
-    this.generateDummyData();
+    this.getData();
+  }
+
+  getData(pagingInfo?: PagingInfo) {
+    console.log(pagingInfo);
+    const dummy: DummyData[] = [
+      {
+        id: 12345,
+        name: 'Chandra Sukmagalih Arifin',
+        position: 'Application Development Specialist',
+        birthDate: new Date(),
+        imageUrl:
+          'https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Gudang_Garam_logo.svg/800px-Gudang_Garam_logo.svg.png',
+      },
+      {
+        id: 23451,
+        name: 'Joseph Tarigan',
+        position: 'Application Development Coordinator',
+        birthDate: new Date(),
+        imageUrl:
+          'https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Gudang_Garam_logo.svg/800px-Gudang_Garam_logo.svg.png',
+      },
+      {
+        id: 34512,
+        name: 'Ilham Kusuma Yuda',
+        position: 'Application Development Specialist',
+        birthDate: new Date(),
+        imageUrl:
+          'https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Gudang_Garam_logo.svg/800px-Gudang_Garam_logo.svg.png',
+      },
+    ];
+
+    this.listData = [];
+    for (let i = 0; i < 10; i++)
+      this.listData.push({
+        ...dummy[i % 3],
+        id: dummy[i % 3].id + i,
+      });
+
+    this.count--;
+    this.listData.slice(0, this.count);
   }
 
   checkDisabledEditBtn(data: DummyData): boolean {
@@ -82,38 +131,39 @@ export class TryGrid2Component implements OnInit {
     ];
   }
 
-  generateDummyData() {
-    const dummy: DummyData[] = [
-      {
-        id: 12345,
-        name: 'Chandra Sukmagalih Arifin',
-        position: 'Application Development Specialist',
-        birthDate: new Date(),
-        imageUrl:
-          'https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Gudang_Garam_logo.svg/800px-Gudang_Garam_logo.svg.png',
-      },
-      {
-        id: 23451,
-        name: 'Joseph Tarigan',
-        position: 'Application Development Coordinator',
-        birthDate: new Date(),
-        imageUrl:
-          'https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Gudang_Garam_logo.svg/800px-Gudang_Garam_logo.svg.png',
-      },
-      {
-        id: 34512,
-        name: 'Ilham Kusuma Yuda',
-        position: 'Application Development Specialist',
-        birthDate: new Date(),
-        imageUrl:
-          'https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Gudang_Garam_logo.svg/800px-Gudang_Garam_logo.svg.png',
-      },
-    ];
+  //   public generateDummyData() {
+  //     const dummy: DummyData[] = [
+  //       {
+  //         id: 12345,
+  //         name: 'Chandra Sukmagalih Arifin',
+  //         position: 'Application Development Specialist',
+  //         birthDate: new Date(),
+  //         imageUrl:
+  //           'https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Gudang_Garam_logo.svg/800px-Gudang_Garam_logo.svg.png',
+  //       },
+  //       {
+  //         id: 23451,
+  //         name: 'Joseph Tarigan',
+  //         position: 'Application Development Coordinator',
+  //         birthDate: new Date(),
+  //         imageUrl:
+  //           'https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Gudang_Garam_logo.svg/800px-Gudang_Garam_logo.svg.png',
+  //       },
+  //       {
+  //         id: 34512,
+  //         name: 'Ilham Kusuma Yuda',
+  //         position: 'Application Development Specialist',
+  //         birthDate: new Date(),
+  //         imageUrl:
+  //           'https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Gudang_Garam_logo.svg/800px-Gudang_Garam_logo.svg.png',
+  //       },
+  //     ];
 
-    for (let i = 0; i < 10; i++)
-      this.listData.push({
-        ...dummy[i % 3],
-        id: dummy[i % 3].id + i,
-      });
-  }
+  //     this.listData.length = 0;
+  //     for (let i = 0; i < 10; i++)
+  //       this.listData.push({
+  //         ...dummy[i % 3],
+  //         id: dummy[i % 3].id + i,
+  //       });
+  //   }
 }

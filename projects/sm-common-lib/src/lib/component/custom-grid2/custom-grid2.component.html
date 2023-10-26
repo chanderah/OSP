@@ -56,10 +56,12 @@
   </table>
 
   <mat-paginator
-    style="margin-top: 10px"
-    [length]="pagingInfo.rowCount"
+    #paginator
+    [length]="tableContent.length"
     [pageSize]="pagingInfo.limit"
     [pageSizeOptions]="pagingInfo.limitOptions"
+    (page)="onPaginateChange($event)"
+    style="margin-top: 10px"
     aria-label="Page"
   >
   </mat-paginator>
