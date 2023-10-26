@@ -7,9 +7,6 @@ import { DummyData } from './../../../../projects/sm-common-lib/src/lib/interfac
   templateUrl: './try-grid2.component.html',
   styleUrls: ['./try-grid2.component.scss'],
 })
-/*
-  @author: chandraa01 26/10/23
-*/
 export class TryGrid2Component implements OnInit {
   listData = [] as DummyData[];
   tableColumns: TableColumns[];

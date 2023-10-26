@@ -1,11 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TableColumns } from '../../interface/table_columns';
+import { PagingInfo } from './../../interface/paging_info';
 
 @Component({
   selector: 'sm-custom-grid2',
   templateUrl: './custom-grid2.component.html',
   styleUrls: ['./custom-grid2.component.css'],
 })
+/**
+ * @author chandraa01
+ * 26-10-2023
+ */
 export class CustomGrid2Component<T> implements OnInit {
   @Input() public width: string = '';
   @Input() public multiple: boolean = false;
@@ -14,7 +19,7 @@ export class CustomGrid2Component<T> implements OnInit {
   @Input() public onRowClick: any; // function
   @Input() public onChecked: any; // function
   @Input() public onActionClick: any; // function
-  // @Input() public pagingInfo: PagingInfo;
+  @Input() public pagingInfo: PagingInfo;
 
   public selectedRowIndex: number[] = [];
 
@@ -22,7 +27,15 @@ export class CustomGrid2Component<T> implements OnInit {
 
   ngOnInit(): void {
     this.tableContent.length = 0;
-    console.log(this.multiple);
+
+    this.pagingInfo = {
+      activePage: 0,
+      offset: 0,
+      limit: 10,
+      limitOptions: [10, 20, 50, 100],
+      sort: { field: '', order: 1 },
+      rowCount: 10,
+    };
   }
 
   public onRowActionClick(action: any, data: T, index: number): void {

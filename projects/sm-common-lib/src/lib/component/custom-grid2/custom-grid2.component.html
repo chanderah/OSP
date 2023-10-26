@@ -57,10 +57,10 @@
 
   <mat-paginator
     style="margin-top: 10px"
-    [length]="100"
-    [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    aria-label="Select page"
+    [length]="pagingInfo.rowCount"
+    [pageSize]="pagingInfo.limit"
+    [pageSizeOptions]="pagingInfo.limitOptions"
+    aria-label="Page"
   >
   </mat-paginator>
 </div>
