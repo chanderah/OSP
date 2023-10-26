@@ -11,7 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SmCommonLibModule } from 'sm-common-lib';
+import { SmCommonLibModule } from 'dist/sm-common-lib';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GudangGaramComponent } from './component/gudang-garam/gudang-garam.component';

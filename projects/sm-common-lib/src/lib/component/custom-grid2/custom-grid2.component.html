@@ -1,24 +1,56 @@
 <table class="mat-elevation-z8" style="width: 100%">
   <thead>
     <tr>
-      <th *ngFor="let col of tableConfig.columns">
+      <th *ngFor="let col of tableColumns">
         {{ col.title }}
       </th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of tableContent">
-      <td *ngFor="let col of tableConfig.columns">
-        <!-- prettier-ignore -->
-        <div *ngIf="col.property !== 'action'; else action" (click)="onRowDataClick(row)">
-          {{ row[ col.property ] }}
+    <!-- prettier-ignore -->
+    <tr *ngFor="let row of tableContent; index as i" style="padding: 100px;">
+      <td *ngFor="let col of tableColumns"  >
+        <div *ngIf="col.property === 'action'; else data">
+          <button
+            mat-mini-fab color="primary"
+            (click)="onRowActionClick(col.type, row, i)"
+            [disabled]="col.disabled ? (isBoolean(col.disabled) ? col.disabled : col.disabled(row)) : false">
+              <mat-icon>{{ col.icon }}</mat-icon>
+          </button>
         </div>
+
+        <ng-template #data>
+          <div *ngIf="col.type !== 'image'; else image" (click)="onRowDataClick(row, i)" style="cursor: pointer">
+            {{ row[col.property] }}
+          </div>
+        </ng-template>
+
+        <ng-template #image>
+          <img
+            [alt]="col + ' ' + i"
+            [src]="row[col.property]"
+            class="shadow-4 object-fit-cover"
+            [attr.width]="col?.image?.width"
+            [attr.height]="col?.image?.height"
+            />
+          </ng-template>
+
+        <!-- <div *ngIf="col.property !== 'action'; else action" (click)="onRowDataClick(row)" style="cursor: pointer">
+          {{ row[col.property] }}
+        </div>
+        <ng-template #image>
+          <img
+            [alt]="col + ' ' + i"
+            [src]="row[col.property]"
+            class="shadow-4 object-fit-cover"
+            width="80px"
+            height="80px" />
+        </ng-template>
         <ng-template #action>
-          <!-- prettier-ignore -->
-          <button mat-mini-fab color="primary" (click)="onRowActionClick(col.type, row)" style="margin-left: 6px">
+          <button mat-mini-fab color="primary" (click)="onRowActionClick(col.type, row)">
             <mat-icon>{{ col.icon }}</mat-icon>
           </button>
-        </ng-template>
+        </ng-template> -->
       </td>
     </tr>
   </tbody>

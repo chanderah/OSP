@@ -3,4 +3,5 @@ export interface DummyData {
   name: string;
   position: string;
   birthDate: Date;
+  imageUrl?: string;
 }
