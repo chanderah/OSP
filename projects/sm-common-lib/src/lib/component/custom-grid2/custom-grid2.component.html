@@ -12,8 +12,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngIf="tableContent.length === 0; else row">
-        <td colspan="100%">No Data</td>
+      <tr *ngIf="tableContent.length === 0 || isLoading; else row">
+        <td colspan="100%">{{ isLoading ? "Loading..." : "No Data" }}</td>
       </tr>
 
       <!-- prettier-ignore -->
@@ -22,7 +22,7 @@
           <td *ngIf="multiple">
             <mat-checkbox color="primary" [checked]="isRowChecked(i)" (click)="onRowChecked($event, i)"></mat-checkbox>
           </td>
-          <td *ngFor="let col of tableColumns"  >
+          <td *ngFor="let col of tableColumns">
             <div *ngIf="col.property === 'action'; else data">
               <button
                 mat-mini-fab color="primary"
@@ -57,7 +57,7 @@
 
   <mat-paginator
     #paginator
-    [length]="tableContent.length"
+    [length]="pagingInfo.rowCount"
     [pageSize]="pagingInfo.limit"
     [pageSizeOptions]="pagingInfo.limitOptions"
     (page)="onPaginateChange($event)"

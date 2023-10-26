@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { TableColumns } from '../../interface/table_columns';
 import { PagingInfo } from './../../interface/paging_info';
@@ -7,13 +14,15 @@ import { PagingInfo } from './../../interface/paging_info';
   selector: 'sm-custom-grid2',
   templateUrl: './custom-grid2.component.html',
   styleUrls: ['./custom-grid2.component.css'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 /**
  * @author chandraa01
  * 26-10-2023
  */
-export class CustomGrid2Component<T> implements OnInit {
+export class CustomGrid2Component<T> implements OnInit, OnChanges {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @Input() public isLoading: boolean;
   @Input() public width: string = '';
   @Input() public multiple: boolean = false;
   @Input() public tableColumns: TableColumns[] = [];
@@ -30,12 +39,11 @@ export class CustomGrid2Component<T> implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    // this.tableContent.length = 0;
-    this.onPaginateChange({
-      length: this.pagingInfo.rowCount || 0,
-      pageIndex: this.pagingInfo.activePage || 0,
-      pageSize: this.pagingInfo.limit,
-    });
+    console.log(this.pagingInfo);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
   }
 
   public onRowActionClick(action: any, data: T, index: number): void {
@@ -73,14 +81,12 @@ export class CustomGrid2Component<T> implements OnInit {
   }
 
   onPaginateChange(e: PageEvent) {
-    // console.log(e);
     this.pagingInfo = {
       ...this.pagingInfo,
       limit: e.pageSize,
       activePage: e.pageIndex,
     };
-    if (!this.init) this.onFilter(this.pagingInfo);
-    this.init = false;
+    this.onFilter(this.pagingInfo);
   }
 
   linkTablePagination() {

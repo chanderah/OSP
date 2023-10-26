@@ -9,10 +9,11 @@ import { DummyData } from './../../../../projects/sm-common-lib/src/lib/interfac
   styleUrls: ['./try-grid2.component.scss'],
 })
 export class TryGrid2Component implements OnInit {
+  isLoading: boolean = true;
   pagingInfo = {} as PagingInfo;
   listData = [] as DummyData[];
   tableColumns = [] as TableColumns[];
-  count = 10;
+
   constructor() {}
 
   ngOnInit(): void {
@@ -24,47 +25,32 @@ export class TryGrid2Component implements OnInit {
       sort: { field: '', order: 1 },
     };
     this.generateTableColumns();
-    this.getData();
+    this.getDataFromApi();
   }
 
-  getData(pagingInfo?: PagingInfo) {
-    console.log(pagingInfo);
-    const dummy: DummyData[] = [
-      {
-        id: 12345,
-        name: 'Chandra Sukmagalih Arifin',
-        position: 'Application Development Specialist',
-        birthDate: new Date(),
-        imageUrl:
-          'https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Gudang_Garam_logo.svg/800px-Gudang_Garam_logo.svg.png',
-      },
-      {
-        id: 23451,
-        name: 'Joseph Tarigan',
-        position: 'Application Development Coordinator',
-        birthDate: new Date(),
-        imageUrl:
-          'https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Gudang_Garam_logo.svg/800px-Gudang_Garam_logo.svg.png',
-      },
-      {
-        id: 34512,
-        name: 'Ilham Kusuma Yuda',
-        position: 'Application Development Specialist',
-        birthDate: new Date(),
-        imageUrl:
-          'https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Gudang_Garam_logo.svg/800px-Gudang_Garam_logo.svg.png',
-      },
-    ];
-
-    this.listData = [];
-    for (let i = 0; i < 10; i++)
-      this.listData.push({
-        ...dummy[i % 3],
-        id: dummy[i % 3].id + i,
+  async getDataFromApi(pagingInfo?: PagingInfo) {
+    this.isLoading = true;
+    await fetch(
+      `https://hub.dummyapis.com/employee?noofRecords=${
+        pagingInfo?.limit
+      }&idStarts=${
+        (pagingInfo?.activePage || 0) * (pagingInfo?.limit || 10) + 1001
+      }`
+    )
+      .then((res) => res.json())
+      .then((response: any[]) => {
+        this.isLoading = false;
+        this.pagingInfo.rowCount = 97;
+        response.forEach((data, i) => {
+          data.name = `${data.firstName} ${data.lastName}`;
+          data.birthDate = new Date();
+          data.position =
+            i % 2 === 0
+              ? 'Application Development Specialist'
+              : 'Application Development Coordinator';
+        });
+        this.listData = response;
       });
-
-    this.count--;
-    this.listData.slice(0, this.count);
   }
 
   checkDisabledEditBtn(data: DummyData): boolean {
