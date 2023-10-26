@@ -13,22 +13,18 @@ export class CustomGrid2Component<T> implements OnInit {
   @Input() public onRowClick: any; // function
   @Input() public onActionClick: any; // function
 
-  // private enableRowClick: boolean = true;
-
   public pagingInfo: any;
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.onRowClick === null);
-  }
+  ngOnInit(): void {}
 
   public onRowActionClick(action: any, data: T, index: number): void {
-    this.onActionClick(action, data, index);
+    if (!this.onActionClick) this.onActionClick(action, data, index);
   }
 
   public onRowDataClick(data: T, index: number) {
-    this.onRowClick(data, index);
+    if (!this.onRowClick) this.onRowClick(data, index);
   }
 
   runEval(fn: any, data: T) {
