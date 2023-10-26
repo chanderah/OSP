@@ -26,6 +26,10 @@ export class TryGrid2Component implements OnInit {
     return false;
   }
 
+  onChecked(indexes: number[]) {
+    console.log('selected index is: ', indexes);
+  }
+
   onActionClick(action: string, data: any, index: number) {
     console.log(action, data);
   }
@@ -34,41 +38,38 @@ export class TryGrid2Component implements OnInit {
     alert(JSON.stringify(data));
   }
 
+  onImageClick(data: any) {
+    console.log('image: ', data);
+  }
+
   generateTableColumns() {
     this.tableColumns = [
       {
         title: 'ID',
         property: 'id',
-        sortable: true,
       },
       {
         title: 'Name',
         property: 'name',
-        sortable: true,
       },
       {
         title: 'Position',
         property: 'position',
-        sortable: false,
       },
-      // {
-      //   title: 'Birth Date',
-      //   property: 'birthDate',
-      //   sortable: false,
-      // },
       {
-        title: 'Preview',
         type: 'image',
+        title: 'Preview',
         property: 'imageUrl',
         image: {
+          onClick: this.onImageClick,
           width: 'auto',
           height: '80px',
         },
       },
       {
+        type: 'edit',
         title: 'Edit',
         property: 'action',
-        type: 'edit',
         disabled: this.checkDisabledEditBtn,
         // disabled: false,
         icon: 'edit',

@@ -1,6 +1,7 @@
 <table class="mat-elevation-z8" style="width: 100%">
   <thead>
     <tr>
+      <th *ngIf="multiple"></th>
       <th *ngFor="let col of tableColumns">
         {{ col.title }}
       </th>
@@ -9,6 +10,9 @@
   <tbody>
     <!-- prettier-ignore -->
     <tr *ngFor="let row of tableContent; index as i" style="padding: 100px;">
+      <td *ngIf="multiple">
+        <mat-checkbox color="primary" [checked]="isRowChecked(i)" (click)="onRowChecked($event, i)"></mat-checkbox>
+      </td>
       <td *ngFor="let col of tableColumns"  >
         <div *ngIf="col.property === 'action'; else data">
           <button
@@ -29,28 +33,13 @@
           <img
             [alt]="col + ' ' + i"
             [src]="row[col.property]"
+            (click)="runEval(col?.image?.onClick, row)"
             class="shadow-4 object-fit-cover"
+            style="cursor: pointer"
             [attr.width]="col?.image?.width"
             [attr.height]="col?.image?.height"
             />
           </ng-template>
-
-        <!-- <div *ngIf="col.property !== 'action'; else action" (click)="onRowDataClick(row)" style="cursor: pointer">
-          {{ row[col.property] }}
-        </div>
-        <ng-template #image>
-          <img
-            [alt]="col + ' ' + i"
-            [src]="row[col.property]"
-            class="shadow-4 object-fit-cover"
-            width="80px"
-            height="80px" />
-        </ng-template>
-        <ng-template #action>
-          <button mat-mini-fab color="primary" (click)="onRowActionClick(col.type, row)">
-            <mat-icon>{{ col.icon }}</mat-icon>
-          </button>
-        </ng-template> -->
       </td>
     </tr>
   </tbody>
