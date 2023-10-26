@@ -20,11 +20,13 @@ export class CustomGrid2Component<T> implements OnInit {
   ngOnInit(): void {}
 
   public onRowActionClick(action: any, data: T, index: number): void {
-    if (!this.onActionClick) this.onActionClick(action, data, index);
+    if (!this.onActionClick) return;
+    return this.onActionClick(action, data, index);
   }
 
   public onRowDataClick(data: T, index: number) {
-    if (!this.onRowClick) this.onRowClick(data, index);
+    if (!this.onRowClick) return;
+    return this.onRowClick(data, index);
   }
 
   runEval(fn: any, data: T) {
