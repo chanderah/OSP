@@ -14,13 +14,14 @@ export class CustomGrid2Component<T> implements OnInit {
   @Input() public onRowClick: any; // function
   @Input() public onChecked: any; // function
   @Input() public onActionClick: any; // function
+  // @Input() public pagingInfo: PagingInfo;
 
   public selectedRowIndex: number[] = [];
-  // public pagingInfo: any;
 
   constructor() {}
 
   ngOnInit(): void {
+    this.tableContent.length = 0;
     console.log(this.multiple);
   }
 

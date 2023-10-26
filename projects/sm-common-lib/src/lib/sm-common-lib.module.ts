@@ -7,6 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
@@ -35,6 +36,7 @@ import { SmCommonLibComponent } from './sm-common-lib.component';
     MatSelectModule,
     MatTableModule,
     MatCheckboxModule,
+    MatPaginatorModule,
   ],
   exports: [SmCommonLibComponent, CustomGridComponent, CustomGrid2Component],
 })

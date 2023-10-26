@@ -1,46 +1,66 @@
-<table class="mat-elevation-z8" style="width: 100%">
-  <thead>
-    <tr>
-      <th *ngIf="multiple"></th>
-      <th *ngFor="let col of tableColumns">
-        {{ col.title }}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- prettier-ignore -->
-    <tr *ngFor="let row of tableContent; index as i" style="padding: 100px;">
-      <td *ngIf="multiple">
-        <mat-checkbox color="primary" [checked]="isRowChecked(i)" (click)="onRowChecked($event, i)"></mat-checkbox>
-      </td>
-      <td *ngFor="let col of tableColumns"  >
-        <div *ngIf="col.property === 'action'; else data">
-          <button
-            mat-mini-fab color="primary"
-            (click)="onRowActionClick(col.type, row, i)"
-            [disabled]="runEval(col.disabled, row)">
-              <mat-icon>{{ col.icon }}</mat-icon>
-          </button>
-        </div>
+<div class="tableBody" style="padding: 10px 0px">
+  <table
+    class="table table-striped mat-elevation-z8"
+    [ngStyle]="{ width: width }"
+  >
+    <thead>
+      <tr>
+        <th *ngIf="multiple"></th>
+        <th *ngFor="let col of tableColumns">
+          {{ col.title }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="tableContent.length === 0; else row">
+        <td colspan="100%">No Data</td>
+      </tr>
 
-        <ng-template #data>
-          <div *ngIf="col.type !== 'image'; else image" (click)="onRowDataClick(row, i)" style="cursor: pointer">
-            {{ row[col.property] }}
-          </div>
-        </ng-template>
+      <!-- prettier-ignore -->
+      <ng-template #row>
+        <tr *ngFor="let row of tableContent; index as i" style="padding: 100px;">
+          <td *ngIf="multiple">
+            <mat-checkbox color="primary" [checked]="isRowChecked(i)" (click)="onRowChecked($event, i)"></mat-checkbox>
+          </td>
+          <td *ngFor="let col of tableColumns"  >
+            <div *ngIf="col.property === 'action'; else data">
+              <button
+                mat-mini-fab color="primary"
+                (click)="onRowActionClick(col.type, row, i)"
+                [disabled]="runEval(col.disabled, row)">
+                  <mat-icon>{{ col.icon }}</mat-icon>
+              </button>
+            </div>
 
-        <ng-template #image>
-          <img
-            [alt]="col + ' ' + i"
-            [src]="row[col.property]"
-            (click)="runEval(col?.image?.onClick, row)"
-            class="shadow-4 object-fit-cover"
-            style="cursor: pointer"
-            [attr.width]="col?.image?.width"
-            [attr.height]="col?.image?.height"
-            />
-          </ng-template>
-      </td>
-    </tr>
-  </tbody>
-</table>
+            <ng-template #data>
+              <div *ngIf="col.type !== 'image'; else image" (click)="onRowDataClick(row, i)" style="cursor: pointer">
+                {{ row[col.property] }}
+              </div>
+            </ng-template>
+
+            <ng-template #image>
+              <img
+                [alt]="col + ' ' + i"
+                [src]="row[col.property]"
+                (click)="runEval(col?.image?.onClick, row)"
+                class="shadow-4 object-fit-cover"
+                style="cursor: pointer"
+                [attr.width]="col?.image?.width"
+                [attr.height]="col?.image?.height"
+                />
+              </ng-template>
+          </td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>
+
+  <mat-paginator
+    style="margin-top: 10px"
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>
