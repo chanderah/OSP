@@ -7,6 +7,7 @@ import { TableColumns } from '../../interface/table_columns';
   styleUrls: ['./custom-grid2.component.css'],
 })
 export class CustomGrid2Component<T> implements OnInit {
+  @Input() public width: string;
   @Input() public tableColumns: TableColumns[];
   @Input() public tableContent: T[];
   @Input() public onRowClick: any; // function
