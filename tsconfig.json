@@ -20,9 +20,10 @@
     "importHelpers": true,
     "paths": {
       "sm-common-lib": [
-        // "dist/sm-common-lib"
-        "projects/sm-common-lib"
-      ]
+        "dist/sm-common-lib"
+        // "projects/sm-common-lib"
+      ],
+      "@angular/*": ["./node_modules/@angular/*"]
     },
     "target": "ES2022",
     "module": "ES2022",

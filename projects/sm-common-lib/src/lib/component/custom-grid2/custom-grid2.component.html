@@ -1,4 +1,4 @@
-<div class="tableBody" style="padding: 10px 0px">
+<div class="wrapper" style="padding: 10px 0px">
   <table
     class="table table-striped mat-elevation-z8"
     [ngStyle]="{ width: width }"
@@ -12,8 +12,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngIf="tableContent.length === 0 || isLoading; else row">
-        <td colspan="100%">{{ isLoading ? "Loading..." : "No Data" }}</td>
+      <tr *ngIf="tableContent.length === 0 || loading; else row">
+        <td colspan="100%">{{ loading ? "Loading..." : "No Data" }}</td>
       </tr>
 
       <!-- prettier-ignore -->

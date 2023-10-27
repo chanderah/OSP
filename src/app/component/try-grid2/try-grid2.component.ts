@@ -29,6 +29,7 @@ export class TryGrid2Component implements OnInit {
   }
 
   async getDataFromApi(pagingInfo?: PagingInfo) {
+    console.log(pagingInfo);
     this.isLoading = true;
     await fetch(
       `https://hub.dummyapis.com/employee?noofRecords=${

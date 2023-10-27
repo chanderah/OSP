@@ -2,7 +2,10 @@ import { CdkColumnDef } from '@angular/cdk/table';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,9 +18,11 @@ import { SmCommonLibModule } from 'dist/sm-common-lib';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GudangGaramComponent } from './component/gudang-garam/gudang-garam.component';
+import { HomeComponent } from './component/home/home.component';
 import { MapComponent } from './component/map/map.component';
 import { TryGridComponent } from './component/try-grid/try-grid.component';
 import { TryGrid2Component } from './component/try-grid2/try-grid2.component';
+import { TryPopupComponent } from './component/try-popup/try-popup.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +31,8 @@ import { TryGrid2Component } from './component/try-grid2/try-grid2.component';
     MapComponent,
     TryGridComponent,
     TryGrid2Component,
+    TryPopupComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +48,9 @@ import { TryGrid2Component } from './component/try-grid2/try-grid2.component';
     MatButtonModule,
     MatSelectModule,
     MatTableModule,
-
+    MatDialogModule,
+    MatChipsModule,
+    MatAutocompleteModule,
     // LIB
     SmCommonLibModule,
   ],

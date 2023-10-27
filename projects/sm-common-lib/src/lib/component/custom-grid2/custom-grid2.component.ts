@@ -1,8 +1,10 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
@@ -22,7 +24,7 @@ import { PagingInfo } from './../../interface/paging_info';
  */
 export class CustomGrid2Component<T> implements OnInit, OnChanges {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @Input() public isLoading: boolean;
+  @Input() public loading: boolean;
   @Input() public width: string = '';
   @Input() public multiple: boolean = false;
   @Input() public tableColumns: TableColumns[] = [];
@@ -32,15 +34,14 @@ export class CustomGrid2Component<T> implements OnInit, OnChanges {
   @Input() public onChecked: any; // function
   @Input() public onActionClick: any; // function
   @Input() public pagingInfo: PagingInfo;
+  @Output() notify: EventEmitter<any> = new EventEmitter();
 
   private init: boolean = true;
   public selectedRowIndex: number[] = [];
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.pagingInfo);
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);

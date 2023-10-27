@@ -35,8 +35,7 @@
     "leaflet.markercluster": "^1.5.3",
     "prettier": "^2.8.8",
     "rxjs": "~7.8.0",
-    "sm-common-lib": "file:dist/sm-common-lib",
-    "tslib": "^2.3.0",
+    "sm-common-lib": "file:projects/sm-common-lib",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
@@ -54,6 +53,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^16.1.0",
+    "tslib": "^2.6.2",
     "typescript": "~5.1.3"
   }
 }
