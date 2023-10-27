@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
+import { MapComponent } from './component/map/map.component';
 // import { SmCommonLibModule } from 'dist/sm-common-lib';
 // import { AppComponent } from './app.component';
 // import { GudangGaramComponent } from './component/gudang-garam/gudang-garam.component';
@@ -27,7 +28,9 @@ import { HomeComponent } from './component/home/home.component';
 // import { TryPopupComponent } from './component/try-popup/try-popup.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, MapComponent,
+    // TryGridComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

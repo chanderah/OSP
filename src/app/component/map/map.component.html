@@ -1,0 +1,32 @@
+<div class="container">
+  <div id="map"></div>
+  <div class="row">
+    <mat-form-field>
+      <mat-label>Choose an option</mat-label>
+      <mat-select
+        [(value)]="selectedOption"
+        (selectionChange)="getOverpassData()"
+      >
+        <mat-option *ngFor="let data of listOption" [value]="data">
+          <span>{{ data }}</span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="grid w-full h-full">
+    <div class="col-12">
+      <p *ngIf="isLoading">Loading...</p>
+      <p *ngIf="!isLoading && details.length < 1">NO RESULT</p>
+      <div
+        *ngFor="let data of details.slice(0, 100)"
+        style="max-width: 80vw; margin-bottom: 20px; border-style: groove"
+      >
+        <div *ngFor="let d of data.tags | keyvalue">
+          <p>
+            <span class="title">{{ d.key }}:</span> {{ d.value }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
