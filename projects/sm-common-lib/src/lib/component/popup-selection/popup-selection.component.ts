@@ -8,7 +8,7 @@ import { Lov } from '../../interface/lov';
 @Component({
   selector: 'sm-popup-selection',
   templateUrl: './popup-selection.component.html',
-  styleUrls: ['./popup-selection.component.scss'],
+  styleUrls: ['./popup-selection.component.scss', '../styles.scss'],
 })
 export class PopupSelectionComponent {
   @ViewChild('input') input: ElementRef<HTMLInputElement>;
@@ -47,6 +47,7 @@ export class PopupSelectionComponent {
     // this.onSubmit = this.props.onSubmit;
     // this.onError = this.props.onError;
     this.listLov = this.props.data;
+    this.isLoading = false;
   }
 
   //prettier-ignore
@@ -56,10 +57,10 @@ export class PopupSelectionComponent {
 }
 
   // initData() {
-  //     this.api.getListTaskReviewer(this.taskData.userId).subscribe((res: any) => {
+  //     this.api.getData(this.data.userId).subscribe((res: any) => {
   //         this.isLoading = false;
-  //         if (res.status === 200) this.listTaskReviewer = res.body;
-  //         else return this.toastr.error(RangerConstantaUtil.APPLICATION_ERROR);
+  //         if (res.status === 200) this.listLov = res.body;
+  //         else return this.toastr.error();
   //     });
   // }
 
@@ -68,31 +69,18 @@ export class PopupSelectionComponent {
     this.resetFilter();
   }
 
+  // prettier-ignore
   onEnter(e: any) {
-    console.log(e);
-    // if (isEmpty(e.input)) return this.resetFilter();
-    // if (this.filteredTaskReviewer.length === 1) return this.onSelect(this.filteredTaskReviewer[0]);
-    // return;
+    if (this.isEmpty(e.input)) return this.resetFilter();
+    if (this.filteredLov.length === 1) return this.onSelect(this.filteredLov[0]);
   }
 
   onRemove(data: any) {
-    console.log(data);
-    // this.selectedTaskReviewer.splice(this.selectedTaskReviewer.indexOf(data), 1);
+    this.selectedLov.splice(this.selectedLov.indexOf(data), 1);
   }
 
   onSave() {
-    console.log(this.selectedLov);
-    // if (this.selectedTaskReviewer.length < 1) return this.toastr.error(RangerConstantaUtil.ASK_REVIEW_REQUIRED);
-    // this.confirm
-    //     .open({
-    //         title: RangerConstantaUtil.TITLE_CAUTION,
-    //         message: RangerConstantaUtil.SUBMIT_CONFIRMATION,
-    //         icon: { show: true, name: 'heroicons_outline:check-circle', color: 'warning' }
-    //     })
-    //     .afterClosed()
-    //     .subscribe((res) => {
-    //         if (res === 'confirmed') return this.runTaskReviewAction();
-    //     });
+    this.dialogRef.close(this.selectedLov);
   }
 
   resetFilter() {
@@ -109,18 +97,6 @@ export class PopupSelectionComponent {
     this.resetFilter();
     this.input.nativeElement.focus();
   }
-
-  // runTaskReviewAction() {
-  //     this.isLoading = true;
-  //     this.reviewAction.listPicReview = this.selectedTaskReviewer;
-  //     this.api.requestTaskReview(this.reviewAction).subscribe((res: any) => {
-  //         this.isLoading = false;
-  //         if (res.status === 200) {
-  //             this.resetFilter();
-  //             return this.dialogRef.close(res);
-  //         } else this.toastr.error(RangerConstantaUtil.ASK_REVIEW_FAILED);
-  //     });
-  // }
 
   // shortenName(name: string, i: number) {
   //     i = i ?? 1;
