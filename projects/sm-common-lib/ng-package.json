@@ -3,5 +3,6 @@
   "dest": "../../dist/sm-common-lib",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "assets": ["styles.scss"]
 }

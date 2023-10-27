@@ -1,20 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'sm-sm-common-lib',
+  encapsulation: ViewEncapsulation.None,
   template: `
-    <p>
-      sm-common-lib works!
-    </p>
+    <p>Hi from sm-common-lib!</p>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class SmCommonLibComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
