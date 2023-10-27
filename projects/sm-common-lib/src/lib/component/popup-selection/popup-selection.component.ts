@@ -31,22 +31,22 @@ export class PopupSelectionComponent {
       @Inject(MAT_DIALOG_DATA) public props: any,
       public dialogRef: MatDialogRef<any>,
   ) {
-      // dialogRef.disableClose = true;
-      // this.inputFormControl.valueChanges.subscribe((text) => {
-      //     if (this.isEmpty(text)) this.filteredLov = this.listLov.slice();
-      //     else {
-      //       this.filteredLov = this.listLov.filter(
-      //         (filtered) => filtered.value.toString().toUpperCase().indexOf(text.toString().trim().toUpperCase()) > -1
-      //       )
-      //     }
-      // });
+      dialogRef.disableClose = false;
+      this.inputFormControl.valueChanges.subscribe((text) => {
+          if (this.isEmpty(text)) this.filteredLov = this.listLov.slice();
+          else {
+            this.filteredLov = this.listLov.filter(
+              (filtered) => filtered.value.toString().toUpperCase().indexOf(text.toString().trim().toUpperCase()) > -1
+            )
+          }
+      });
   }
 
   ngOnInit(): void {
     // this.onFilter = this.props.onFilter;
     // this.onSubmit = this.props.onSubmit;
     // this.onError = this.props.onError;
-    // this.listLov = this.props.listData;
+    this.listLov = this.props.data;
   }
 
   //prettier-ignore
@@ -64,9 +64,8 @@ export class PopupSelectionComponent {
   // }
 
   onSelect(data: any) {
-    console.log(data);
-    // if (this.selectedTaskReviewer.indexOf(data) < 0) this.selectedTaskReviewer.push(data);
-    // this.resetFilter();
+    if (this.selectedLov.indexOf(data) < 0) this.selectedLov.push(data);
+    this.resetFilter();
   }
 
   onEnter(e: any) {

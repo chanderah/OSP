@@ -25,11 +25,12 @@ export class TryPopupComponent implements OnInit {
   openPopup() {
     this.dialog
       .open(PopupSelectionComponent, {
+        width: '75vh',
         data: {
           data: this.listLovDummy,
-          // onError: this.onError,
-          // onSubmit: this.onSubmit,
-          // onFilter: this.onFilter,
+          onError: this.onError,
+          onSubmit: this.onSubmit,
+          onFilter: this.onFilter,
         },
       })
       .afterClosed()

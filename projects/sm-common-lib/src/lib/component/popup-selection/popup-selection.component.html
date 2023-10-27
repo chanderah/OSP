@@ -1,9 +1,12 @@
 <div class="parent">
   <h2 mat-dialog-title>Popup</h2>
-  <!-- <mat-dialog-content class="mat-typography">
-    <div class="grid grid-cols-1 w-full h-full">
+  <mat-dialog-content class="mat-typography" style="width: 100%">
+    <div
+      class="grid grid-cols-1 w-full h-full"
+      style="width: 100%; height: 100%"
+    >
       <mat-form-field appearance="fill" (click)="openAutoComplete($event)">
-        <mat-chip-list #chipList class="py-2">
+        <mat-chip-grid #chipList class="py-2">
           <mat-chip *ngFor="let data of selectedLov" (removed)="onRemove(data)">
             <span>{{ data.value }}</span>
             <button matChipRemove class="mb-2 mr-1">
@@ -11,7 +14,8 @@
             </button>
           </mat-chip>
           <input
-            #taskReviewerInput
+            #input
+            style="width: 100%"
             placeholder="Search..."
             [formControl]="inputFormControl"
             [matAutocomplete]="auto"
@@ -20,7 +24,7 @@
             (matChipInputTokenEnd)="onEnter($event)"
             [disabled]="listLov.length === 0"
           />
-        </mat-chip-list>
+        </mat-chip-grid>
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option
             *ngFor="let data of filteredLov"
@@ -45,5 +49,5 @@
     >
       Save
     </button>
-  </mat-dialog-actions> -->
+  </mat-dialog-actions>
 </div>
