@@ -5,6 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "dev": "npm install && ng serve",
+    "lib-install": "cd projects/sm-common-lib && npm install",
+    "lib-watch": "ng build sm-common-lib --watch",
+    "lib": "ng build sm-common-lib && ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
