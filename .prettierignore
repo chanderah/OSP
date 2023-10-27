@@ -1,5 +1,6 @@
 # Ignore artifacts:
 
+*.md
 app-routing.module.ts
 
 build
