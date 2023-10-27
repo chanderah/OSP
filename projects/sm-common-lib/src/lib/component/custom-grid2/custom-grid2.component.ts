@@ -44,7 +44,11 @@ export class CustomGrid2Component<T> implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
+    if (this.tableContent.length > 0) {
+      if (changes['tableColumns']) {
+        this.tableColumns = this.tableColumns;
+      }
+    }
   }
 
   public onRowActionClick(action: any, data: T, index: number): void {
