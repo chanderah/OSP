@@ -5,9 +5,7 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    "strictPropertyInitialization": false,
     "strict": true,
-    "noImplicitAny": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -18,16 +16,12 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "paths": {
-      "sm-common-lib": ["dist/sm-common-lib"],
-      "@angular/*": ["./node_modules/@angular/*"]
-    },
-    "target": "ES2022",
-    "module": "ES2022",
-    "useDefineForClassFields": false,
-    "types": ["node"],
-    // "types": ["node", "leaflet", "leaflet-draw"],
-    "lib": ["ES2022", "dom"]
+    "target": "es2017",
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "dom"
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

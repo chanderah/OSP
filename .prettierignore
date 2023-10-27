@@ -1,0 +1,12 @@
+# Ignore artifacts:
+
+app-routing.module.ts
+
+build
+coverage
+dist
+out
+public
+node_modules
+.next
+.vscode
