@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TableComponent } from './component/table/table.component';
 // import { CustomGridComponent } from './component/custom-grid/custom-grid.component';
 // import { CustomGrid2Component } from './component/custom-grid2/custom-grid2.component';
 // import { PopupSelectionComponent } from './component/popup-selection/popup-selection.component';
@@ -24,7 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    SmCommonLibComponent
+    SmCommonLibComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatAutocompleteModule,
   ],
   exports: [
-    SmCommonLibComponent
+    SmCommonLibComponent,
+    TableComponent
   ]
 })
 export class SmCommonLibModule { }

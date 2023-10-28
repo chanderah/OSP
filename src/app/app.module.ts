@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SmCommonLibModule } from 'projects/sm-common-lib/src/public-api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
@@ -47,9 +48,9 @@ import { MapComponent } from './component/map/map.component';
     MatTableModule,
     MatDialogModule,
     MatChipsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
     // LIB
-    // SmCommonLibModule,
+    SmCommonLibModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
